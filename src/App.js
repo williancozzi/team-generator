@@ -1,7 +1,9 @@
+import Inputs from "./Components/Inputs";
+
 function App() {
   return (
     <div>
-      <input type="text" placeholder="Enter name" />
+      <Inputs />
     </div>
   );
 }
