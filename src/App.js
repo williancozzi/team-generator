@@ -1,9 +1,9 @@
-import Inputs from "./Components/Inputs";
+import TeamGenerator from "./Components/TeamGenerator";
 
 function App() {
   return (
     <div>
-      <Inputs />
+      <TeamGenerator />
     </div>
   );
 }
