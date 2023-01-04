@@ -1,4 +1,5 @@
 import React from "react";
+import { Box, Grid, TextField, Button } from "@mui/material";
 
 function shuffle(array) {
   for (let i = array.length - 1; i > 0; i--) {
@@ -43,30 +44,45 @@ function TeamGenerator() {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      {names.map((name, index) => (
-        <div style={{ display: "block" }}>
-          <input key={index} onChange={handleNameChange.bind(null, index)} />
-        </div>
-      ))}
-      <button type="submit">Generate Teams</button>
-      {teams.length > 0 && (
-        <>
-          <h2>Team 1</h2>
-          <ul>
-            {teams[0].map((name, index) => (
-              <li key={index}>{name}</li>
+    <Box m={8}>
+      <Grid container>
+        <Grid item md={4}>
+          <form onSubmit={handleSubmit}>
+            {names.map((name, index) => (
+              <div style={{ display: "block" }}>
+                <TextField
+                  key={index}
+                  onChange={handleNameChange.bind(null, index)}
+                  sx={{ mt: 1, width: "100%" }}
+                  placeholder={`Player name #${index + 1}`}
+                />
+              </div>
             ))}
-          </ul>
-          <h2>Team 2</h2>
-          <ul>
-            {teams[1].map((name, index) => (
-              <li key={index}>{name}</li>
-            ))}
-          </ul>
-        </>
-      )}
-    </form>
+            <Box justifyContent="end" display="flex">
+              <Button type="submit" variant="contained" sx={{ mt: 2 }}>
+                Generate Teams
+              </Button>
+            </Box>
+            {teams.length > 0 && (
+              <>
+                <h2>Team 1</h2>
+                <ul>
+                  {teams[0].map((name, index) => (
+                    <li key={index}>{name}</li>
+                  ))}
+                </ul>
+                <h2>Team 2</h2>
+                <ul>
+                  {teams[1].map((name, index) => (
+                    <li key={index}>{name}</li>
+                  ))}
+                </ul>
+              </>
+            )}
+          </form>
+        </Grid>
+      </Grid>
+    </Box>
   );
 }
 
